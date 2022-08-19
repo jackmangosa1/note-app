@@ -17,11 +17,16 @@ function App() {
     setNotesArray([newNote, ...notesArray])
   }
 
+  const deleteNote = (idToDelete) =>{
+    setNotesArray(notesArray.filter( note => note.id !== idToDelete))
+  }
+
   return (
     <div className="App">
       <Sidebar
       notes= {notesArray}
       addNote={addNote}
+      deleteNote={deleteNote}
       />
       <Main/>
     </div>

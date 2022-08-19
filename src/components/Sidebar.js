@@ -1,4 +1,4 @@
-function Sidebar({notes, addNote}){
+function Sidebar({notes, addNote, deleteNote}){
     return(
 
     <div className="app-sidebar">
@@ -13,9 +13,11 @@ function Sidebar({notes, addNote}){
         <div className="app-sidebar-note">
             <div className="sidebar-note-title">
                 <strong>{note.title}</strong>
-                <button>Delete</button>
+                <button onClick={() => deleteNote(note.id)}>Delete</button>
+
             </div>
             <p>{note.body && note.body.substr(0, 100) + "..."}</p>
+
             <small className="note-meta">
                 Last modified {new Date(note.lastModified).toLocaleDateString("en-GB", {
                     hour: "2-digit",
