@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   const[notesArray, setNotesArray] = useState([])
+  const[activeNote, setActiveNote] = useState(false)
 
   const addNote = () => {
     const newNote = {
@@ -27,7 +28,11 @@ function App() {
       notes= {notesArray}
       addNote={addNote}
       deleteNote={deleteNote}
+      activeNote={activeNote}
+      setActiveNote={setActiveNote}
+
       />
+      
       <Main/>
     </div>
   );
