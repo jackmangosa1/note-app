@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { act } from "react-dom/test-utils";
 import uuid from "react-uuid";
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
@@ -6,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const[notesArray, setNotesArray] = useState([])
   const[activeNote, setActiveNote] = useState(false)
+  
 
   const addNote = () => {
     const newNote = {
@@ -22,6 +24,10 @@ function App() {
     setNotesArray(notesArray.filter( note => note.id !== idToDelete))
   }
 
+const getActiveNote = () =>{
+  return notesArray.find(note => note.id === activeNote)
+}
+
   return (
     <div className="App">
       <Sidebar
@@ -32,8 +38,10 @@ function App() {
       setActiveNote={setActiveNote}
 
       />
-      
-      <Main/>
+
+      <Main
+     activeNote={getActiveNote()}
+      />
     </div>
   );
 }
