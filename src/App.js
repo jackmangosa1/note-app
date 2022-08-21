@@ -7,7 +7,7 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const[notesArray, setNotesArray] = useState([])
   const[activeNote, setActiveNote] = useState(false)
-  
+
 
   const addNote = () => {
     const newNote = {
@@ -28,6 +28,21 @@ const getActiveNote = () =>{
   return notesArray.find(note => note.id === activeNote)
 }
 
+const updateNote = (UpdatedNote) =>{
+
+const updatedNoteArray =notesArray.map( note => {
+
+  if(note.id === activeNote){
+    return UpdatedNote
+  }
+
+  return note
+})
+
+setNotesArray(updatedNoteArray)
+}
+
+
   return (
     <div className="App">
       <Sidebar
@@ -41,6 +56,7 @@ const getActiveNote = () =>{
 
       <Main
      activeNote={getActiveNote()}
+     updateNote={updateNote}
       />
     </div>
   );
