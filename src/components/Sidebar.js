@@ -1,4 +1,8 @@
 function Sidebar({notes, addNote, deleteNote, activeNote, setActiveNote}){
+    
+    const sortedArray= notes.sort((a, b) => b.lastModified - a.lastModified)
+
+
     return(
 
     <div className="app-sidebar">
@@ -8,7 +12,7 @@ function Sidebar({notes, addNote, deleteNote, activeNote, setActiveNote}){
         </div>
 
         <div className="app-sidebar-notes">
-       {notes.map(note => (
+       {sortedArray.map(note => (
 
         <div  className={`app-sidebar-note ${note.id === activeNote && "active"}`} onClick={() => setActiveNote(note.id)}>
             <div className="sidebar-note-title">
